@@ -1,0 +1,30 @@
+# Web framework
+django
+djangorestframework
+
+# Async / streaming
+channels
+daphne
+
+# Ephemeris
+pyswisseph
+
+# LLM
+anthropic
+
+# Database
+psycopg2-binary
+
+# Cache / message broker
+redis
+django-redis
+
+# Task queue
+celery
+
+# Environment
+python-dotenv
+
+# Linting / formatting
+black
+flake8
