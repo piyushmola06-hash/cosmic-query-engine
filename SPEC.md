@@ -182,7 +182,7 @@ Raw conversational user responses — any format, any order.
 ```json
 {
   "query": "string",
-  "tarot_opted_in": "boolean",
+  "iching_opted_in": "boolean",
   "dob": { "day": "number", "month": "number", "year": "number" },
   "birth_time": {
     "tier": "exact | approximate | none",
