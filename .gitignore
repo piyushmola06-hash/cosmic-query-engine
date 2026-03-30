@@ -1,0 +1,43 @@
+# Environment variables — never commit
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+backend/venv/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/.env
+
+# Flutter / Dart
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/build/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
