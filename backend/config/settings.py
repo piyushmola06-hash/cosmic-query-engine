@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Project apps
     'rest_framework',
     'collection',
+    'heads.numerology',
 ]
 
 MIDDLEWARE = [
