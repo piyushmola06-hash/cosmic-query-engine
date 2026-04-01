@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'collection',
     'heads.numerology',
     'heads.chinese',
+    'heads.philosophy',
 ]
 
 MIDDLEWARE = [
