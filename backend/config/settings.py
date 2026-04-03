@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'heads.philosophy',
     'heads.iching',
     'synthesis',
+    'core',
 ]
 
 MIDDLEWARE = [

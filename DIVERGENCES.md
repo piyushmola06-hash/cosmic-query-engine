@@ -36,3 +36,17 @@ The original field name was a copy-paste error in the spec.
 **Notes:** First divergence logged. Process working correctly — 
 Claude Code identified and flagged before proceeding.
 
+## 2026-04-03 — S-15 / S-16
+
+**Slice:** S-15 / S-16 — Profile Save and Load
+**What diverged:** `full_birth_name` and `current_name` on `UserProfile`
+are stored as plain `CharField` in v0.1. The spec implies encrypted storage
+for sensitive personal data.
+**Decision:** Fix code in v0.2
+**Spec update:** No spec change — encryption is implied, not contracted.
+**Notes:** `django-cryptography` requires additional key management
+infrastructure (Fernet keys, environment variable wiring) that is out of
+scope for v0.1. Plain storage is acceptable for local development. Before
+any production deployment these fields must be migrated to encrypted storage.
+Field-level TODO comment added in `core/models.py`.
+
