@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'heads.chinese',
     'heads.philosophy',
     'heads.iching',
+    'synthesis',
 ]
 
 MIDDLEWARE = [
