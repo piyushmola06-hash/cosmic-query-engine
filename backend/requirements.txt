@@ -1,6 +1,7 @@
 # Web framework
 django
 djangorestframework
+django-cors-headers
 
 # Async / streaming
 channels
