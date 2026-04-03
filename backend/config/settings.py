@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "collection",
     "heads.numerology",
     "heads.chinese",
+    "heads.vedic",
     "heads.philosophy",
     "heads.iching",
     "synthesis",
