@@ -45,6 +45,8 @@ from heads.chinese.services import ChineseAstrologyHeadEngine
 from heads.iching.services import IChingHeadEngine
 from heads.numerology.services import NumerologyHeadEngine
 from heads.philosophy.services import PhilosophyHeadEngine
+from heads.vedic.services import VedicHeadEngine
+from heads.western.services import WesternHeadEngine
 from synthesis.confidence import ConfidenceNoteGenerator
 from synthesis.services import SynthesisLayer
 from synthesis.trail import TrailRenderer
@@ -129,11 +131,38 @@ def _run_head_engines(
 
     head_findings: dict[str, Optional[dict]] = {}
 
-    # Vedic and Western deferred.
+    moon = session.moon_resolution or {}
+    gender = pool.get("gender")
+
+    # S-05 Vedic
     if "vedic" in active_heads:
-        head_findings["vedic"] = None
+        try:
+            head_findings["vedic"] = VedicHeadEngine().compute(
+                dob=dob,
+                birth_time=birth_time_tier,
+                birth_location=birth_location,
+                gender=gender,
+                moon=moon,
+                query=query,
+            )
+        except Exception:
+            logger.exception("Vedic head failed")
+            head_findings["vedic"] = None
+
+    # S-06 Western
     if "western" in active_heads:
-        head_findings["western"] = None
+        try:
+            head_findings["western"] = WesternHeadEngine().compute(
+                dob=dob,
+                birth_time=birth_time_tier,
+                birth_location=birth_location,
+                gender=gender,
+                moon=moon,
+                query=query,
+            )
+        except Exception:
+            logger.exception("Western head failed")
+            head_findings["western"] = None
 
     # S-07 Numerology
     if "numerology" in active_heads:
@@ -176,7 +205,8 @@ def _run_head_engines(
     # S-10 I Ching
     if "iching" in active_heads:
         try:
-            seed = full_birth_name or str(dob)
+            # Seed: prefer iching_seed_word from pool, else query, else birth name
+            seed = pool.get("iching_seed_word") or query or full_birth_name or str(dob)
             engine = IChingHeadEngine(anthropic_client=anthropic_client)
             result = engine.compute(seed=seed, query=query)
             head_findings["iching"] = result

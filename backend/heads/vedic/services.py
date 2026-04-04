@@ -79,6 +79,7 @@ if _SWE_AVAILABLE:
 
 # ── City geocoding (lat, lon) ─────────────────────────────────────────────────
 _CITY_COORDS: dict[str, tuple[float, float]] = {
+    "cuttack": (20.462, 85.883), "bhubaneswar": (20.296, 85.825),
     "mumbai": (19.076, 72.877), "delhi": (28.614, 77.209),
     "new delhi": (28.614, 77.209), "kolkata": (22.573, 88.363),
     "chennai": (13.083, 80.270), "bangalore": (12.972, 77.594),
