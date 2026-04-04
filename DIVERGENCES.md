@@ -90,3 +90,14 @@ scope for v0.1. Plain storage is acceptable for local development. Before
 any production deployment these fields must be migrated to encrypted storage.
 Field-level TODO comment added in `core/models.py`.
 
+## 2026-03-30 — S-06
+
+**Slice:** S-06 — Western Astrology Head Engine
+**What diverged:** swe.houses() returns a 0-indexed
+12-element cusps tuple. Original code used cusps[i+1]
+causing silent IndexError swallowing rising sign
+computation entirely. Fixed to cusps[i].
+**Decision:** Fix code
+**Notes:** pyswisseph implementation detail not visible
+from spec level. Tests now cover rising sign computation
+explicitly for exact tier.
